@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://(you).png" type="Texture" id=1]
+[ext_resource path="res://resources/fade.tres" type="Animation" id=2]
+
+[node name="(you)" type="Node2D"]
+position = Vector2( 0, -86 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.12246, 5.61221 )
+scale = Vector2( 0.35, 0.45 )
+texture = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -18.8775
+margin_top = -27.1429
+margin_right = 21.1225
+margin_bottom = 1.85706
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "YOU"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade"
+anims/fade = ExtResource( 2 )

@@ -1,0 +1,10 @@
+#!/bin/bash
+DIR=/home/gaboloth/prj/godot/rhymepong/exports/web
+
+echo "cleaning ..." &&
+rm -f $DIR/rhymepong-html5.zip &&
+echo "making zip archive ..." &&
+zip $DIR/rhymepong-html5.zip $DIR/* &&
+echo "uploading ..." &&
+butler push $DIR/rhymepong-html5.zip kekelp/rhymepong:HTML5 &&
+echo "done"

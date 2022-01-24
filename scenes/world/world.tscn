@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/world/world.gd" type="Script" id=1]
+[ext_resource path="res://scenes/world/left_net.gd" type="Script" id=2]
+[ext_resource path="res://scenes/world/right_net.gd" type="Script" id=3]
+[ext_resource path="res://scenes/world/ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/world/avatar/Avatar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/fade.tres" type="Animation" id=6]
+[ext_resource path="res://resources/fonts/font_but_bigger.tres" type="DynamicFont" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 787.965, 102.197 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 146.946, 206.399 )
+
+[node name="world" type="Node2D"]
+script = ExtResource( 1 )
+left_score_label_p = NodePath("CanvasLayer/Centering/LeftScoreLabel")
+right_score_label_p = NodePath("CanvasLayer/Centering/RightScoreLabel")
+announcement_label_p = NodePath("CanvasLayer/Centering/AnnouncementLabel")
+line_edit_p = NodePath("CanvasLayer/Centering/LineEdit")
+side_switcher_p = NodePath("CanvasLayer/Centering/SideSwitcher")
+enemy_word_label_p = NodePath("CanvasLayer/Centering/EnemyWordLabel")
+enemy_word_descript_p = NodePath("CanvasLayer/Centering/EnemyWordDescript")
+
+[node name="EnemyWordLabel" type="Label" parent="."]
+margin_left = 45.3927
+margin_top = 174.322
+margin_right = 297.393
+margin_bottom = 216.322
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walls" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2( 543.058, 11.3137 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+position = Vector2( 543.058, 605.283 )
+shape = SubResource( 1 )
+
+[node name="left_net" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_net"]
+position = Vector2( -152.735, 311.127 )
+shape = SubResource( 2 )
+
+[node name="right_net" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_net"]
+position = Vector2( 1179.45, 296.985 )
+shape = SubResource( 2 )
+
+[node name="ServePosLeft" type="Position2D" parent="."]
+position = Vector2( 590, 300 )
+
+[node name="ServePosRight" type="Position2D" parent="."]
+position = Vector2( 494, 300 )
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 512.0
+margin_right = 512.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ball" parent="." instance=ExtResource( 4 )]
+position = Vector2( 530.138, -201.142 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Centering" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Centering"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -220.0
+margin_top = -80.0
+margin_right = 220.0
+margin_bottom = -30.0
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Centering/LineEdit"]
+margin_left = 465.0
+margin_top = 2.0
+margin_right = 712.0
+margin_bottom = 61.0
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Centering/LineEdit/Label"]
+anims/fade = ExtResource( 6 )
+
+[node name="LeftScoreLabel" type="Label" parent="CanvasLayer/Centering"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -500.0
+margin_top = 50.0
+margin_right = -25.0
+margin_bottom = 75.0
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightScoreLabel" type="Label" parent="CanvasLayer/Centering"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 25.0
+margin_top = 50.0
+margin_right = 500.0
+margin_bottom = 81.0
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnnouncementLabel" type="Label" parent="CanvasLayer/Centering"]
+margin_left = 112.0
+margin_top = 106.0
+margin_right = 912.0
+margin_bottom = 148.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Centering/AnnouncementLabel"]
+anims/fade = ExtResource( 6 )
+
+[node name="SideSwitcher" type="Control" parent="CanvasLayer/Centering"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -290.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyWordLabel" type="Label" parent="CanvasLayer/Centering"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -113.0
+margin_bottom = -82.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyWordDescript" type="Label" parent="CanvasLayer/Centering"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -141.543
+margin_bottom = -127.543
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftAvatar" parent="." instance=ExtResource( 5 )]
+position = Vector2( 190.488, 298.431 )
+
+[node name="RightAvatar" parent="." instance=ExtResource( 5 )]
+position = Vector2( 914.343, 285.732 )
