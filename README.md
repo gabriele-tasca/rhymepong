@@ -6,4 +6,4 @@ The connection is peer-to-peer through WebRTC, and uses a small NodeJS server fo
 
 Playable at https://kekelp.itch.io/rhymepong.
 
-Note: the signaling server is hosted on a free tier server and can take up to 5-10 seconds to wake up after inactivity.
+Note: the signaling server is hosted on a free tier Heroku instance and can take up to 5-10 seconds to wake up after inactivity.
